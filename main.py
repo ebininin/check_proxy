@@ -5,7 +5,7 @@ import funtions as Funt
 
 ip_regex = re.compile(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}')
 
-with open(input("Path to file:\n"), "r") as file:
+with open('proxy_list', "r") as file:
     lines = file.readlines()
 
 flag = input("Check every port? (Y/N):\n").lower() in ['y', 'yes']
