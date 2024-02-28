@@ -25,5 +25,5 @@ def main():
     print(f"Finished in {total_time} second{'s'[:int(total_time)^1]}")
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
