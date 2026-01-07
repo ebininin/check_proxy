@@ -1,5 +1,5 @@
-Check proxies in 'proxy_list' thought 'icanhazip.com' and return the proxy IP
+Check provided IPv4(s) in 'proxy_list' through 'icanhazip.com' and return proxies IP or failured
 
-proxy_list format:
-- For single port:  "ip:port:user:password"
-- For multi port:   "ip:port-range:user:password"
+proxy_list format - 1 IPv4 each line:
+- For single port:  ipv4:port:user:password
+- For multi port:   ipv4:port-range:user:password
