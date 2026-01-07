@@ -2,4 +2,4 @@ Check proxies in 'proxy_list' thought 'icanhazip.com' and return the proxy IP
 
 proxy_list format:
 - For single port:  "ip:port:user:password"
-- For multi port:   "ip:port_range:user:password"
+- For multi port:   "ip:port-range:user:password"
