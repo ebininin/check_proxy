@@ -1,7 +1,7 @@
 import concurrent.futures
 import re
 import time
-import funtions as Funt
+import functions as proxy_utils
 
 def main():
     ip_regex = re.compile(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}')
@@ -10,13 +10,13 @@ def main():
         lines = file.readlines()
     
     flag = input("Check every port? (Y/N):\n").lower() in ['y', 'yes']
-    lst = Funt.url_gen_all(lines) if flag else (next(Funt.url_gen(line)) for line in lines)
-    sorted_lst = sorted(lst, key=Funt.get_port)
+    lst = proxy_utils.url_gen_all(lines) if flag else (next(proxy_utils.url_gen(line)) for line in lines)
+    sorted_lst = sorted(lst, key=proxy_utils.get_port)
     
     start = time.perf_counter()
     
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = executor.map(Funt.check_proxy, sorted_lst)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        results = executor.map(proxy_utils.check_proxy, sorted_lst)
         for result in results:
             print(result)
 

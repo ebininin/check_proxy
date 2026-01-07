@@ -22,6 +22,10 @@ def get_port(url):
 
 
 def url_gen(item):
+    """
+    Generate proxy URLs from a line containing:
+    IP:PORT or IP:START-END or with auth
+    """
     ip_address, port_range, user, password = read_line(item)
     if user is not None:
         try:
@@ -47,7 +51,7 @@ def check_proxy(url):
     proxies = {'http': url}
     address, port = read_url(url)
     try:
-        r = requests.get('http://icanhazip.com', proxies=proxies)
+        r = requests.get('http://icanhazip.com', proxies=proxies, timeout=10)
         content = r.content.decode().strip()
         return f'IP: {address} - Port: {port}\n{content}\n'
     except Exception:
